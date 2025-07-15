@@ -18,7 +18,12 @@ function LoginPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
     });
-    const data = await res.json();
+    // const data = await res.json();
+    let data = { message: "Unexpected Erro" };
+    const text = await res.text();
+    if (text) {
+      data = JSON.parse(text);
+    }
     if (data.token) {
       localStorage.setItem("token", data.token);
       alert("Login successful");

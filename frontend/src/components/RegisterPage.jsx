@@ -18,7 +18,12 @@ function RegisterPage() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form),
     });
-    const data = await res.json();
+    // const data = await res.json();
+    let data = { message: "Unexpected Erro" };
+    const text = await res.text();
+    if (text) {
+      data = JSON.parse(text);
+    }
     alert(data.message);
     if (res.ok) navigate("/login");
   };
