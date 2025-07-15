@@ -32,6 +32,10 @@ function authenticateToken(req, res, next) {
   });
 }
 
+app.get('/', (req, res) => {
+  res.send("Welcome to server\n Thank you for patience render takes time bro");
+})
+
 // Register
 app.post('/register', (req, res) => {
   const { username, password } = req.body;
